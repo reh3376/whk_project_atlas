@@ -12,11 +12,12 @@ This guide will help you get up and running with Project Atlas development.
 2. [Development Environment](#development-environment)
 3. [Project Structure](#project-structure)
 4. [Daily Workflow](#daily-workflow)
-5. [Terminal Command Reference](#terminal-command-reference)
-6. [Working with Documentation](#working-with-documentation)
-7. [Git Workflow](#git-workflow)
-8. [Linear Integration](#linear-integration)
-9. [Resuming After a Break](#resuming-after-a-break)
+5. [Makefile Shortcuts](#makefile-shortcuts)
+6. [Terminal Command Reference](#terminal-command-reference)
+7. [Working with Documentation](#working-with-documentation)
+8. [Git Workflow](#git-workflow)
+9. [Linear Integration](#linear-integration)
+10. [Resuming After a Break](#resuming-after-a-break)
 
 ---
 
@@ -37,13 +38,15 @@ cd /Users/reh3376/WHK_project_atlas
 ### 2. Start the Development Environment
 
 ```bash
-docker-compose up -d
+make up        # Start container
+# OR: docker-compose up -d
 ```
 
 ### 3. Enter the Container
 
 ```bash
-docker-compose exec atlas-dev bash
+make shell     # Enter container
+# OR: docker-compose exec atlas-dev bash
 ```
 
 You're now inside the development container with Python 3.12 and all tools ready.
@@ -59,8 +62,18 @@ pytest --version    # Should show pytest version
 ### 5. Exit When Done
 
 ```bash
-exit                    # Exit container
-docker-compose down     # Stop container (optional)
+exit           # Exit container
+make down      # Stop container (optional)
+```
+
+### Quick Command Reference
+
+```bash
+make help      # Show all available commands
+make up        # Start dev environment
+make shell     # Enter container
+make check     # Run all quality checks
+make state     # Show project state
 ```
 
 ---
@@ -268,6 +281,73 @@ WHK_project_atlas/
    exit
    docker-compose down
    ```
+
+---
+
+## Makefile Shortcuts
+
+The project includes a Makefile with convenient shortcuts. Run `make help` to see all commands.
+
+### Container Management
+
+| Command | Description |
+|---------|-------------|
+| `make up` | Start development container |
+| `make down` | Stop development container |
+| `make shell` | Enter container shell |
+| `make restart` | Restart container |
+| `make build` | Build container |
+| `make rebuild` | Rebuild from scratch (no cache) |
+| `make logs` | Follow container logs |
+| `make status` | Show container status |
+
+### Code Quality
+
+| Command | Description |
+|---------|-------------|
+| `make lint` | Run linter (ruff check) |
+| `make format` | Format code (ruff format) |
+| `make typecheck` | Run type checker (mypy) |
+| `make test` | Run tests |
+| `make test-cov` | Run tests with coverage |
+| `make check` | Run ALL checks (lint + typecheck + test) |
+
+### Project State
+
+| Command | Description |
+|---------|-------------|
+| `make state` | Show current PROJECT_STATE.md |
+| `make log` | Show recent WORK_LOG.md entries |
+| `make context` | Copy CONTEXT_PACKET.md to clipboard |
+
+### Git Workflow
+
+| Command | Description |
+|---------|-------------|
+| `make commit` | Interactive add and commit |
+| `make push` | Push to remote |
+| `make sync` | Pull, commit changes, and push |
+
+### Cleanup
+
+| Command | Description |
+|---------|-------------|
+| `make clean` | Clean Python cache files |
+| `make clean-all` | Clean everything including Docker volumes |
+
+### Short Aliases
+
+For even faster access:
+
+| Alias | Equivalent |
+|-------|------------|
+| `make u` | `make up` |
+| `make d` | `make down` |
+| `make s` | `make shell` |
+| `make l` | `make lint` |
+| `make t` | `make test` |
+| `make c` | `make check` |
+| `make st` | `make state` |
 
 ---
 
@@ -553,21 +633,24 @@ uv pip install -r requirements.txt
 ╔════════════════════════════════════════════════════════════════╗
 ║                    PROJECT ATLAS QUICK REFERENCE               ║
 ╠════════════════════════════════════════════════════════════════╣
-║ START DEV ENV:     docker-compose up -d                        ║
-║ ENTER CONTAINER:   docker-compose exec atlas-dev bash          ║
-║ STOP ENV:          docker-compose down                         ║
+║ SHOW ALL COMMANDS: make help                                   ║
 ║                                                                ║
-║ RUN LINTER:        ruff check .                                ║
-║ RUN TESTS:         pytest                                      ║
-║ TYPE CHECK:        mypy .                                      ║
+║ START DEV ENV:     make up       (or: docker-compose up -d)    ║
+║ ENTER CONTAINER:   make shell    (or: docker-compose exec...)  ║
+║ STOP ENV:          make down     (or: docker-compose down)     ║
 ║                                                                ║
-║ CHECK STATE:       cat Project_Atlas/04_Memory_and_Handoff/    ║
-║                    PROJECT_STATE.md                            ║
+║ RUN ALL CHECKS:    make check    (lint + typecheck + test)     ║
+║ RUN LINTER:        make lint     (or: ruff check .)            ║
+║ RUN TESTS:         make test     (or: pytest)                  ║
+║ TYPE CHECK:        make typecheck (or: mypy .)                 ║
 ║                                                                ║
-║ COMMIT:            git add -A && git commit -m "type: message" ║
-║ PUSH:              git push                                    ║
+║ CHECK STATE:       make state                                  ║
+║ COPY CONTEXT:      make context  (copies to clipboard)         ║
 ║                                                                ║
-║ LINEAR:            Cmd+K → Create issue                        ║
+║ COMMIT:            make commit   (interactive)                 ║
+║ PUSH:              make push                                   ║
+║                                                                ║
+║ SHORT ALIASES:     make u (up), make s (shell), make c (check) ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 
