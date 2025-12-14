@@ -29,7 +29,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install uv (fast Python package installer)
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
-ENV PATH="/root/.cargo/bin:$PATH"
+ENV PATH="/root/.local/bin:$PATH"
 
 # Copy dependency files first (for layer caching)
 COPY requirements.txt .
