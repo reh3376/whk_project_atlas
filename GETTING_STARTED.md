@@ -95,38 +95,42 @@ make state     # Show project state
 
 ```bash
 # Start container in background
-docker-compose up -d
+make up                            # Recommended
+# Or: docker-compose -f docker/docker-compose.yml up -d
 
 # Check container status
-docker-compose ps
+make status
+# Or: docker-compose -f docker/docker-compose.yml ps
 
 # View container logs
-docker-compose logs -f atlas-dev
+make logs
+# Or: docker-compose -f docker/docker-compose.yml logs -f atlas-dev
 ```
 
 ### Entering the Container
 
 ```bash
 # Interactive bash shell
-docker-compose exec atlas-dev bash
+make shell
+# Or: docker-compose -f docker/docker-compose.yml exec atlas-dev bash
 
 # Run a single command
-docker-compose exec atlas-dev python --version
-docker-compose exec atlas-dev ruff check .
+docker-compose -f docker/docker-compose.yml exec atlas-dev python --version
+make lint  # For linting
 ```
 
 ### Stopping the Environment
 
 ```bash
 # Stop container (keeps volumes)
-docker-compose down
+make down
+# Or: docker-compose -f docker/docker-compose.yml down
 
 # Stop and remove volumes (fresh start)
-docker-compose down -v
+make down        # Or: docker-compose -f docker/docker-compose.yml down -v
 
 # Rebuild after Dockerfile changes
-docker-compose build --no-cache
-docker-compose up -d
+make rebuild     # Or: docker-compose -f docker/docker-compose.yml build --no-cache
 ```
 
 ### Native Python Alternative (No Docker)
@@ -158,70 +162,62 @@ ruff check .
 
 ```
 WHK_project_atlas/
-├── .python-version          # Python version specification
-├── Dockerfile               # Dev container definition
-├── docker-compose.yml       # Container orchestration
-├── requirements.txt         # Python dependencies
+├── README.md                # Main project entry point
 ├── GETTING_STARTED.md       # This file
+├── Makefile                 # Development shortcuts
+├── requirements.txt         # Python dependencies
 │
-└── Project_Atlas/           # Main documentation and framework
-    ├── README.md            # Project overview
-    │
-    ├── 00_Project_Charter/  # Goals, scope, success metrics
-    │   ├── baseline_assessment.md  # Your skill ratings
-    │   ├── goals.md
-    │   ├── scope.md
-    │   └── success_metrics.md
-    │
-    ├── 01_Roadmap/          # Phase planning
-    │   ├── roadmap.md       # Phase overview
-    │   ├── phase_map.md     # Deliverables per phase
-    │   └── dependency_graph.md
-    │
-    ├── 02_Templates/        # Reusable document templates
-    │   ├── adr_template.md
-    │   ├── design_doc_template.md
-    │   ├── sprint_brief.md
-    │   └── ...
-    │
-    ├── 03_Source_Policy/    # Citation and evidence rules
-    │   ├── source_tiers.md
-    │   └── citation_rules.md
-    │
-    ├── 04_Memory_and_Handoff/  # ⭐ KEY: Project state tracking
-    │   ├── PROJECT_STATE.md    # Where are we? (read first!)
-    │   ├── CONTEXT_PACKET.md   # Paste into new AI chats
-    │   ├── WORK_LOG.md         # Daily progress notes
-    │   ├── DECISION_JOURNAL.md # Why we decided things
-    │   ├── OPEN_THREADS.md     # Unresolved questions
-    │   └── START_HERE_RESUME.md
-    │
-    ├── 05_Toolchain_Integrations/
-    │   ├── Linear/          # Task tracking setup
-    │   └── GitHub/          # PR templates
-    │
-    └── Phases/              # Phase-specific work
-        ├── Phase_00_Foundation_Setup/
-        │   ├── Start_Here.md
-        │   ├── Deliverables/   # Output artifacts
-        │   ├── Sprints/        # Sprint briefs
-        │   └── References/     # Reading materials
-        │
-        ├── Phase_01_Modular_Platform_Architecture/
-        ├── Phase_02_SDLC_DevEx_Standardization/
-        ├── Phase_03_Data_Pipelines_Curation/
-        ├── Phase_04_MLOps_SME_Supervision/
-        └── Phase_05_Reliability_Observability_Security/
+├── docker/                  # Container configuration
+│   ├── Dockerfile
+│   └── docker-compose.yml
+│
+├── docs/                    # Project documentation
+│   ├── README.md            # Documentation index
+│   ├── 00_Project_Charter/  # Goals, scope, success metrics
+│   │   ├── baseline_assessment.md  # Your skill ratings
+│   │   ├── goals.md
+│   │   ├── scope.md
+│   │   └── success_metrics.md
+│   │
+│   ├── 01_Roadmap/          # Phase planning
+│   │   ├── roadmap.md       # Phase overview
+│   │   ├── phase_map.md     # Deliverables per phase
+│   │   └── dependency_graph.md
+│   │
+│   ├── 02_Templates/        # Reusable document templates
+│   │
+│   ├── 03_Source_Policy/    # Citation and evidence rules
+│   │
+│   ├── 04_Memory_and_Handoff/  # ⭐ KEY: Project state tracking
+│   │   ├── PROJECT_STATE.md    # Where are we? (read first!)
+│   │   ├── CONTEXT_PACKET.md   # Paste into new AI chats
+│   │   ├── WORK_LOG.md         # Daily progress notes
+│   │   └── DECISION_JOURNAL.md # Why we decided things
+│   │
+│   ├── 05_Toolchain_Integrations/
+│   │
+│   └── Phases/              # Phase-specific work
+│       ├── Phase_00_Foundation_Setup/
+│       ├── Phase_01_Modular_Platform_Architecture/
+│       ├── Phase_02_SDLC_DevEx_Standardization/
+│       ├── Phase_03_Data_Pipelines_Curation/
+│       ├── Phase_04_MLOps_SME_Supervision/
+│       └── Phase_05_Reliability_Observability_Security/
+│
+├── src/                     # Source code (future)
+├── tests/                   # Tests (future)
+├── scripts/                 # Utility scripts
+└── archive/                 # Archived materials
 ```
 
 ### Key Files to Know
 
 | File | Purpose | When to Use |
 |------|---------|-------------|
-| `PROJECT_STATE.md` | Current phase, sprint, next tasks | Check daily |
-| `CONTEXT_PACKET.md` | AI chat context restoration | Paste into new AI sessions |
-| `WORK_LOG.md` | Progress journal | Update daily/weekly |
-| `baseline_assessment.md` | Your skill ratings | Review quarterly |
+| `docs/04_Memory_and_Handoff/PROJECT_STATE.md` | Current phase, sprint, next tasks | Check daily |
+| `docs/04_Memory_and_Handoff/CONTEXT_PACKET.md` | AI chat context restoration | Paste into new AI sessions |
+| `docs/04_Memory_and_Handoff/WORK_LOG.md` | Progress journal | Update daily/weekly |
+| `docs/00_Project_Charter/baseline_assessment.md` | Your skill ratings | Review quarterly |
 
 ---
 
@@ -231,13 +227,13 @@ WHK_project_atlas/
 
 1. **Check current state**
    ```bash
-   cat Project_Atlas/04_Memory_and_Handoff/PROJECT_STATE.md
+   cat docs/04_Memory_and_Handoff/PROJECT_STATE.md
    ```
 
 2. **Start dev environment**
    ```bash
-   docker-compose up -d
-   docker-compose exec atlas-dev bash
+   make up
+   make shell
    ```
 
 3. **Pull latest changes** (if applicable)
@@ -279,7 +275,7 @@ WHK_project_atlas/
 8. **Stop container** (optional)
    ```bash
    exit
-   docker-compose down
+   make down
    ```
 
 ---
@@ -356,22 +352,20 @@ For even faster access:
 ### Docker Commands
 
 ```bash
-# === CONTAINER LIFECYCLE ===
-docker-compose up -d              # Start in background
-docker-compose down               # Stop containers
-docker-compose down -v            # Stop and remove volumes
-docker-compose restart            # Restart containers
-docker-compose ps                 # List running containers
-docker-compose logs -f atlas-dev  # Follow container logs
+# === CONTAINER LIFECYCLE (using Makefile shortcuts) ===
+make up               # Start in background
+make down             # Stop containers
+make clean-all        # Stop and remove volumes
+make restart          # Restart containers
+make status           # List running containers
+make logs             # Follow container logs
 
 # === ENTERING CONTAINER ===
-docker-compose exec atlas-dev bash           # Interactive shell
-docker-compose exec atlas-dev python         # Python REPL
-docker-compose exec atlas-dev <command>      # Run single command
+make shell            # Interactive shell
 
 # === BUILDING ===
-docker-compose build              # Build images
-docker-compose build --no-cache   # Rebuild from scratch
+make build            # Build images
+make rebuild          # Rebuild from scratch (no cache)
 ```
 
 ### Python Development (Inside Container)
@@ -425,9 +419,9 @@ git diff --staged            # Show staged changes
 ```bash
 # === PROJECT PATHS ===
 cd /Users/reh3376/WHK_project_atlas                    # Project root
-cd Project_Atlas                                        # Documentation
-cd Project_Atlas/04_Memory_and_Handoff                  # State tracking
-cd Project_Atlas/Phases/Phase_00_Foundation_Setup       # Current phase
+cd docs                                        # Documentation
+cd docs/04_Memory_and_Handoff                  # State tracking
+cd docs/Phases/Phase_00_Foundation_Setup       # Current phase
 
 # === USEFUL SHORTCUTS ===
 cat PROJECT_STATE.md         # View current state
@@ -443,8 +437,8 @@ grep -r "TODO" .             # Find TODOs in files
 
 1. **Use templates** from `02_Templates/`
    ```bash
-   cp Project_Atlas/02_Templates/design_doc_template.md \
-      Project_Atlas/Phases/Phase_00_Foundation_Setup/Deliverables/my_design.md
+   cp docs/02_Templates/design_doc_template.md \
+      docs/Phases/Phase_00_Foundation_Setup/Deliverables/my_design.md
    ```
 
 2. **Fill in the template** with your content
@@ -457,8 +451,8 @@ When you make an architectural decision:
 
 1. Copy the ADR template:
    ```bash
-   cp Project_Atlas/02_Templates/adr_template.md \
-      Project_Atlas/Phases/Phase_00_Foundation_Setup/Deliverables/ADR-001-decision-name.md
+   cp docs/02_Templates/adr_template.md \
+      docs/Phases/Phase_00_Foundation_Setup/Deliverables/ADR-001-decision-name.md
    ```
 
 2. Fill in:
@@ -563,12 +557,12 @@ When returning to the project after days/weeks:
 
 ### 1. Read PROJECT_STATE.md
 ```bash
-cat Project_Atlas/04_Memory_and_Handoff/PROJECT_STATE.md
+cat docs/04_Memory_and_Handoff/PROJECT_STATE.md
 ```
 
 ### 2. Review WORK_LOG.md
 ```bash
-head -100 Project_Atlas/04_Memory_and_Handoff/WORK_LOG.md
+head -100 docs/04_Memory_and_Handoff/WORK_LOG.md
 ```
 
 ### 3. Check Linear
@@ -578,14 +572,14 @@ Open the current phase project to see in-progress issues.
 
 Copy `CONTEXT_PACKET.md` content and paste into new AI chat:
 ```bash
-cat Project_Atlas/04_Memory_and_Handoff/CONTEXT_PACKET.md | pbcopy
+cat docs/04_Memory_and_Handoff/CONTEXT_PACKET.md | pbcopy
 ```
 (This copies to clipboard on macOS)
 
 ### 5. Start Development
 ```bash
-docker-compose up -d
-docker-compose exec atlas-dev bash
+make up
+make shell
 ```
 
 ---
@@ -599,16 +593,14 @@ docker-compose exec atlas-dev bash
 docker ps
 
 # If not, open Docker Desktop app, then:
-docker-compose up -d
+make up
 ```
 
 ### Container Build Fails
 
 ```bash
 # Rebuild from scratch
-docker-compose down -v
-docker-compose build --no-cache
-docker-compose up -d
+make rebuild
 ```
 
 ### Permission Issues
@@ -635,9 +627,9 @@ uv pip install -r requirements.txt
 ╠════════════════════════════════════════════════════════════════╣
 ║ SHOW ALL COMMANDS: make help                                   ║
 ║                                                                ║
-║ START DEV ENV:     make up       (or: docker-compose up -d)    ║
-║ ENTER CONTAINER:   make shell    (or: docker-compose exec...)  ║
-║ STOP ENV:          make down     (or: docker-compose down)     ║
+║ START DEV ENV:     make up                                      ║
+║ ENTER CONTAINER:   make shell                                   ║
+║ STOP ENV:          make down                                    ║
 ║                                                                ║
 ║ RUN ALL CHECKS:    make check    (lint + typecheck + test)     ║
 ║ RUN LINTER:        make lint     (or: ruff check .)            ║
@@ -656,5 +648,5 @@ uv pip install -r requirements.txt
 
 ---
 
-_For detailed phase documentation, see `Project_Atlas/Phases/Phase_XX/Start_Here.md`_
+_For detailed phase documentation, see `docs/Phases/Phase_XX/Start_Here.md`_
 

@@ -11,7 +11,36 @@ Use this as a daily/weekly journal of what happened.
 
 ---
 
-### 2025-12-14
+### 2025-12-14 (Session 2 - Repository Reorganization)
+
+**What I did:**
+- Reorganized repository structure for better scalability:
+  - Moved `Project_Atlas/` → `docs/` (documentation home)
+  - Moved `Dockerfile`, `docker-compose.yml` → `docker/`
+  - Moved `Project_Atlas/Tools/` → `scripts/`
+  - Created `src/` for future source code
+  - Created `tests/` for future tests
+  - Created root `README.md`
+- Updated Makefile to use new `docker/` paths
+- Updated all internal documentation links
+- Updated all script paths in utility files
+- Updated GETTING_STARTED.md with new structure and Makefile shortcuts
+- Updated CONTEXT_PACKET.md with new file locations
+- Updated PROJECT_STATE.md with reorganization decision
+
+**What changed:**
+- Repository structure reorganized
+- All `docker-compose` commands now use `-f docker/docker-compose.yml`
+- Documentation paths changed from `Project_Atlas/` to `docs/`
+- Script paths changed from `Tools/` to `scripts/`
+
+**What I will do next:**
+- Create ADRs (container-first, uv, branching, repo-structure)
+- Sprint 00.1 retro (2025-12-28)
+
+---
+
+### 2025-12-14 (Session 1 - Phase 00 Kickoff)
 
 **What I did:**
 - Initiated Project Atlas Phase 00 kickoff

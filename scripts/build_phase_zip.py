@@ -2,7 +2,7 @@
 """Build a standalone zip for a given phase folder.
 
 Usage:
-  python Tools/build_phase_zip.py Phases/Phase_00_Foundation_Setup
+  python scripts/build_phase_zip.py docs/Phases/Phase_00_Foundation_Setup
 
 The zip will be written to:
   dist/<Phase_Folder_Name>.zip
@@ -23,6 +23,7 @@ def main():
         raise SystemExit(f"Phase path not found or not a directory: {phase_path}")
 
     repo_root = Path(__file__).resolve().parents[1]
+    docs_root = repo_root / "docs"
     dist = repo_root / "dist"
     dist.mkdir(exist_ok=True)
 
@@ -31,11 +32,11 @@ def main():
     # Include the phase + shared templates + source policy + memory/handoff + roadmap
     include_paths = [
         phase_path,
-        repo_root / "02_Templates",
-        repo_root / "03_Source_Policy",
-        repo_root / "04_Memory_and_Handoff",
-        repo_root / "01_Roadmap",
-        repo_root / "00_Project_Charter",
+        docs_root / "02_Templates",
+        docs_root / "03_Source_Policy",
+        docs_root / "04_Memory_and_Handoff",
+        docs_root / "01_Roadmap",
+        docs_root / "00_Project_Charter",
         repo_root / "README.md",
     ]
 

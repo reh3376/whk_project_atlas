@@ -1,13 +1,14 @@
 # Project Atlas Development Environment
-# Usage: docker-compose up -d
-# Shell: docker-compose exec atlas-dev bash
-# Logs: docker-compose logs -f
+# Usage: docker-compose -f docker/docker-compose.yml up -d
+# Shell: docker-compose -f docker/docker-compose.yml exec atlas-dev bash
+# Logs: docker-compose -f docker/docker-compose.yml logs -f
+# Note: Run from project root, or use 'make up' shortcut
 
 services:
   atlas-dev:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: docker/Dockerfile
     container_name: atlas-dev
     
     # Keep container running for interactive development
@@ -17,7 +18,7 @@ services:
     # Mount workspace for live editing
     volumes:
       # Project source code (live mount)
-      - .:/app
+      - ..:/app
       # Persist virtual environment across rebuilds
       - atlas-venv:/app/.venv
       # Cache uv downloads

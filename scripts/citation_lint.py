@@ -7,7 +7,7 @@ It simply flags Markdown docs that contain:
 - references to 'blog'/'medium' without a warning label
 
 Usage:
-  python Tools/citation_lint.py
+  python scripts/citation_lint.py
 """
 
 from pathlib import Path

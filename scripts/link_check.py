@@ -4,7 +4,7 @@
 This is intentionally simple: it catches the common "moved file" problems.
 
 Usage:
-  python Tools/link_check.py
+  python scripts/link_check.py
 """
 
 import re

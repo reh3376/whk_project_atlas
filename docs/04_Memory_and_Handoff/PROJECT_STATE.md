@@ -8,24 +8,24 @@ _Last updated: 2025-12-14_
 - Objective this week: Establish foundation - baseline assessment, sprint brief, dev environment, Linear integration
 
 ## What was completed since last update
-- Created structured baseline assessment template (pending user skill ratings)
+- Completed baseline self-assessment (user ratings captured)
 - Created Sprint 00.1 brief with full scope, deliverables, and acceptance criteria
-- Created development environment specification (design doc)
-- Created Docker-based dev environment (Dockerfile, docker-compose.yml, requirements.txt)
-- Created dev environment setup runbook
-- Created engineering cadence document
-- Created SDLC baseline document
-- Created metrics plan (DORA + leading indicators)
-- Created Linear setup guide
-- Updated .gitignore with Python/Docker patterns
-- Updated WORK_LOG.md with session notes
-- Updated CHANGELOG.md with major updates
-- Regenerated CONTEXT_PACKET.md
+- Set up development environment (Docker + native Python fallback)
+- Created Makefile with development shortcuts
+- Set up Linear integration (Initiative + 6 Projects)
+- Reorganized repository structure:
+  - `docs/` — Project documentation (formerly `Project_Atlas/`)
+  - `docker/` — Dockerfile and docker-compose.yml
+  - `scripts/` — Utility scripts (formerly `Project_Atlas/Tools/`)
+  - `src/` — Future source code
+  - `tests/` — Future tests
+- Created root README.md
+- Updated all internal documentation links
 
 ## Next 3 tasks (do these next)
-1. **USER ACTION**: Complete baseline self-assessment ratings in `00_Project_Charter/baseline_assessment.md`
-2. **USER ACTION**: Set up Linear workspace per `Deliverables/linear_setup_guide.md` and update Linear Links below
-3. **USER ACTION**: Validate dev environment with `docker-compose up`
+1. Create ADRs (container-first, uv, branching strategy)
+2. Sprint 00.1 retro (scheduled 2025-12-28)
+3. Plan Phase 01 sprint brief
 
 ## Pending Sprint 00.1 items
 - Create ADRs (container-first, uv, branching strategy)
@@ -37,6 +37,7 @@ _Last updated: 2025-12-14_
 - Use uv for Python dependency management
 - GitHub Flow branching strategy with squash merges
 - DORA metrics as primary delivery health indicators
+- Reorganized repo structure: `docs/`, `docker/`, `scripts/`, `src/`, `tests/`
 
 ## Baseline Snapshot (captured 2025-12-14)
 

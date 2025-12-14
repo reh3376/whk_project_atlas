@@ -4,12 +4,12 @@ This project is meant to survive long gaps. Assume any chat assistant has zero m
 
 ## The 30-second resume method
 
-1. Open `04_Memory_and_Handoff/PROJECT_STATE.md`
+1. Open `docs/04_Memory_and_Handoff/PROJECT_STATE.md`
 2. Read the **Current Phase**, **Current Sprint**, and **Next 3 tasks**
 2a. If you are using Linear, open the matching Project link under **Linear Links** in `PROJECT_STATE.md`.
-3. Open the corresponding phase’s `Start_Here.md`
-4. Run `Tools/make_context_packet.py` to refresh `CONTEXT_PACKET.md`
-5. Paste the contents of `CONTEXT_PACKET.md` into your new chat/session
+3. Open the corresponding phase's `Start_Here.md`
+4. Run `python scripts/make_context_packet.py` to refresh `CONTEXT_PACKET.md`
+5. Paste the contents of `CONTEXT_PACKET.md` into your new chat/session (or run `make context`)
 
 ## The rule
 

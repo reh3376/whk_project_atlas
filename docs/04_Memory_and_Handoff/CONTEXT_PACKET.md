@@ -1,7 +1,7 @@
 # Context packet (copy/paste into a new AI chat)
 
 > This file is designed to be pasted into a chat assistant to restore context.
-> Regenerate it with `python Tools/make_context_packet.py` whenever you want it fresh.
+> Regenerate with `python scripts/make_context_packet.py` or `make context` to copy to clipboard.
 > 
 > **Last regenerated: 2025-12-14**
 
@@ -64,21 +64,23 @@ Evidence policy:
 - User verification required before marking anything as complete.
 
 ## 5) Where the files are
-- Roadmap: `01_Roadmap/`
-- Templates: `02_Templates/`
-- Phase work: `Phases/`
-- Handoff/memory: `04_Memory_and_Handoff/`
-- Phase 00 Deliverables: `Phases/Phase_00_Foundation_Setup/Deliverables/`
-- Dev environment files: workspace root (`Dockerfile`, `docker-compose.yml`, `requirements.txt`)
+- Documentation root: `docs/`
+- Roadmap: `docs/01_Roadmap/`
+- Templates: `docs/02_Templates/`
+- Phase work: `docs/Phases/`
+- Handoff/memory: `docs/04_Memory_and_Handoff/`
+- Phase 00 Deliverables: `docs/Phases/Phase_00_Foundation_Setup/Deliverables/`
+- Dev environment: `docker/` (Dockerfile, docker-compose.yml)
+- Scripts: `scripts/`
 
 ## 6) Key documents for this phase
 
 | Document | Path |
 |----------|------|
-| Sprint Brief | `Phases/Phase_00_Foundation_Setup/Sprints/Sprint_1/Sprint_00_1_Brief.md` |
-| Dev Environment Design | `Phases/Phase_00_Foundation_Setup/Deliverables/dev_environment_design.md` |
-| Dev Environment Runbook | `Phases/Phase_00_Foundation_Setup/Deliverables/dev_environment_runbook.md` |
-| Engineering Cadence | `Phases/Phase_00_Foundation_Setup/Deliverables/engineering_cadence.md` |
-| SDLC Baseline | `Phases/Phase_00_Foundation_Setup/Deliverables/sdlc_baseline.md` |
-| Metrics Plan | `Phases/Phase_00_Foundation_Setup/Deliverables/metrics_plan.md` |
-| Linear Setup | `Phases/Phase_00_Foundation_Setup/Deliverables/linear_setup_guide.md` |
+| Sprint Brief | `docs/Phases/Phase_00_Foundation_Setup/Sprints/Sprint_1/Sprint_00_1_Brief.md` |
+| Dev Environment Design | `docs/Phases/Phase_00_Foundation_Setup/Deliverables/dev_environment_design.md` |
+| Dev Environment Runbook | `docs/Phases/Phase_00_Foundation_Setup/Deliverables/dev_environment_runbook.md` |
+| Engineering Cadence | `docs/Phases/Phase_00_Foundation_Setup/Deliverables/engineering_cadence.md` |
+| SDLC Baseline | `docs/Phases/Phase_00_Foundation_Setup/Deliverables/sdlc_baseline.md` |
+| Metrics Plan | `docs/Phases/Phase_00_Foundation_Setup/Deliverables/metrics_plan.md` |
+| Linear Setup | `docs/Phases/Phase_00_Foundation_Setup/Deliverables/linear_setup_guide.md` |

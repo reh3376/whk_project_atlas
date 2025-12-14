@@ -10,6 +10,9 @@
         commit push sync \
         clean clean-all
 
+# Docker compose file location
+COMPOSE := docker-compose -f docker/docker-compose.yml
+
 # Default target
 .DEFAULT_GOAL := help
 
@@ -50,41 +53,41 @@ help: ## Show this help message
 
 up: ## Start development container in background
 	@echo "$(GREEN)Starting development container...$(RESET)"
-	docker-compose up -d
+	$(COMPOSE) up -d
 	@echo "$(GREEN)Container started. Run 'make shell' to enter.$(RESET)"
 
 down: ## Stop development container
 	@echo "$(YELLOW)Stopping development container...$(RESET)"
-	docker-compose down
+	$(COMPOSE) down
 
 restart: ## Restart development container
 	@echo "$(YELLOW)Restarting development container...$(RESET)"
-	docker-compose restart
+	$(COMPOSE) restart
 
 shell: ## Enter development container shell
 	@echo "$(GREEN)Entering container shell...$(RESET)"
-	docker-compose exec atlas-dev bash
+	$(COMPOSE) exec atlas-dev bash
 
 build: ## Build development container
 	@echo "$(GREEN)Building development container...$(RESET)"
-	docker-compose build
+	$(COMPOSE) build
 
 rebuild: ## Rebuild container from scratch (no cache)
 	@echo "$(YELLOW)Rebuilding container from scratch...$(RESET)"
-	docker-compose down -v
-	docker-compose build --no-cache
-	docker-compose up -d
+	$(COMPOSE) down -v
+	$(COMPOSE) build --no-cache
+	$(COMPOSE) up -d
 	@echo "$(GREEN)Container rebuilt and started.$(RESET)"
 
 logs: ## Follow container logs
-	docker-compose logs -f atlas-dev
+	$(COMPOSE) logs -f atlas-dev
 
 status: ## Show container status
 	@echo "$(BLUE)Container Status:$(RESET)"
-	@docker-compose ps
+	@$(COMPOSE) ps
 	@echo ""
 	@echo "$(BLUE)Health Check:$(RESET)"
-	@docker-compose exec atlas-dev python --version 2>/dev/null || echo "$(RED)Container not running$(RESET)"
+	@$(COMPOSE) exec atlas-dev python --version 2>/dev/null || echo "$(RED)Container not running$(RESET)"
 
 #==============================================================================
 # CODE QUALITY (runs inside container)
@@ -92,35 +95,35 @@ status: ## Show container status
 
 lint: ## Run linter (ruff check)
 	@echo "$(GREEN)Running linter...$(RESET)"
-	docker-compose exec atlas-dev ruff check .
+	$(COMPOSE) exec atlas-dev ruff check .
 
 format: ## Format code (ruff format)
 	@echo "$(GREEN)Formatting code...$(RESET)"
-	docker-compose exec atlas-dev ruff format .
+	$(COMPOSE) exec atlas-dev ruff format .
 
 typecheck: ## Run type checker (mypy)
 	@echo "$(GREEN)Running type checker...$(RESET)"
-	docker-compose exec atlas-dev mypy .
+	$(COMPOSE) exec atlas-dev mypy .
 
 test: ## Run tests
 	@echo "$(GREEN)Running tests...$(RESET)"
-	docker-compose exec atlas-dev pytest
+	$(COMPOSE) exec atlas-dev pytest
 
 test-cov: ## Run tests with coverage
 	@echo "$(GREEN)Running tests with coverage...$(RESET)"
-	docker-compose exec atlas-dev pytest --cov
+	$(COMPOSE) exec atlas-dev pytest --cov
 
 check: ## Run all checks (lint + typecheck + test)
 	@echo "$(GREEN)Running all checks...$(RESET)"
 	@echo ""
 	@echo "$(BLUE)=== Linting ===$(RESET)"
-	docker-compose exec atlas-dev ruff check . || true
+	$(COMPOSE) exec atlas-dev ruff check . || true
 	@echo ""
 	@echo "$(BLUE)=== Type Checking ===$(RESET)"
-	docker-compose exec atlas-dev mypy . || true
+	$(COMPOSE) exec atlas-dev mypy . || true
 	@echo ""
 	@echo "$(BLUE)=== Tests ===$(RESET)"
-	docker-compose exec atlas-dev pytest || true
+	$(COMPOSE) exec atlas-dev pytest || true
 	@echo ""
 	@echo "$(GREEN)All checks complete.$(RESET)"
 
@@ -132,7 +135,7 @@ state: ## Show current project state
 	@echo "$(BLUE)═══════════════════════════════════════════════════════════$(RESET)"
 	@echo "$(BLUE)                    PROJECT STATE$(RESET)"
 	@echo "$(BLUE)═══════════════════════════════════════════════════════════$(RESET)"
-	@cat Project_Atlas/04_Memory_and_Handoff/PROJECT_STATE.md | head -50
+	@cat docs/04_Memory_and_Handoff/PROJECT_STATE.md | head -50
 	@echo ""
 	@echo "$(YELLOW)... (truncated, see full file for more)$(RESET)"
 
@@ -140,13 +143,13 @@ log: ## Show recent work log entries
 	@echo "$(BLUE)═══════════════════════════════════════════════════════════$(RESET)"
 	@echo "$(BLUE)                    RECENT WORK LOG$(RESET)"
 	@echo "$(BLUE)═══════════════════════════════════════════════════════════$(RESET)"
-	@cat Project_Atlas/04_Memory_and_Handoff/WORK_LOG.md | head -60
+	@cat docs/04_Memory_and_Handoff/WORK_LOG.md | head -60
 	@echo ""
 	@echo "$(YELLOW)... (truncated, see full file for more)$(RESET)"
 
 context: ## Copy context packet to clipboard (macOS)
 	@echo "$(GREEN)Copying CONTEXT_PACKET.md to clipboard...$(RESET)"
-	@cat Project_Atlas/04_Memory_and_Handoff/CONTEXT_PACKET.md | pbcopy
+	@cat docs/04_Memory_and_Handoff/CONTEXT_PACKET.md | pbcopy
 	@echo "$(GREEN)Done! Paste into new AI chat to restore context.$(RESET)"
 
 #==============================================================================
@@ -192,7 +195,7 @@ clean: ## Clean Python cache files
 
 clean-all: clean ## Clean everything including Docker volumes
 	@echo "$(RED)Stopping containers and removing volumes...$(RESET)"
-	docker-compose down -v
+	$(COMPOSE) down -v
 	@echo "$(GREEN)Full cleanup complete.$(RESET)"
 
 #==============================================================================

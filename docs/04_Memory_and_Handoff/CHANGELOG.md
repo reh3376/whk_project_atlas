@@ -9,6 +9,14 @@ Keep a simple log of major updates to this repo.
 
 ## Entries
 
+- 2025-12-14: **Repository Reorganization** - Restructured for scalability
+  - `Project_Atlas/` → `docs/` (documentation home)
+  - `Dockerfile`, `docker-compose.yml` → `docker/`
+  - `Project_Atlas/Tools/` → `scripts/`
+  - Added `src/`, `tests/` directories for future code
+  - Created root `README.md`
+  - Updated all internal links and Makefile paths
+
 - 2025-12-14: **Phase 00 Kickoff** - Initial setup of Project Atlas foundation
   - Created baseline assessment template (`00_Project_Charter/baseline_assessment.md`)
   - Created Sprint 00.1 brief (`Phases/Phase_00_Foundation_Setup/Sprints/Sprint_1/Sprint_00_1_Brief.md`)

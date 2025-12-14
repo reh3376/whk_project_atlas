@@ -2,10 +2,10 @@
 """Generate a copy/paste context packet for resuming the project in a new chat.
 
 Usage:
-  python Tools/make_context_packet.py
+  python scripts/make_context_packet.py
 
 Writes:
-  04_Memory_and_Handoff/CONTEXT_PACKET.md
+  docs/04_Memory_and_Handoff/CONTEXT_PACKET.md
 
 It stitches together:
 - a static header (already in the file)
@@ -19,8 +19,8 @@ from pathlib import Path
 
 def main():
     repo_root = Path(__file__).resolve().parents[1]
-    packet_path = repo_root / "04_Memory_and_Handoff" / "CONTEXT_PACKET.md"
-    state_path = repo_root / "04_Memory_and_Handoff" / "PROJECT_STATE.md"
+    packet_path = repo_root / "docs" / "04_Memory_and_Handoff" / "CONTEXT_PACKET.md"
+    state_path = repo_root / "docs" / "04_Memory_and_Handoff" / "PROJECT_STATE.md"
 
     packet = packet_path.read_text(encoding="utf-8")
     state = state_path.read_text(encoding="utf-8")
