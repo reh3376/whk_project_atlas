@@ -1,0 +1,56 @@
+# Project Atlas Development Environment
+# Usage: docker-compose up -d
+# Shell: docker-compose exec atlas-dev bash
+# Logs: docker-compose logs -f
+
+services:
+  atlas-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: atlas-dev
+    
+    # Keep container running for interactive development
+    stdin_open: true
+    tty: true
+    
+    # Mount workspace for live editing
+    volumes:
+      # Project source code (live mount)
+      - .:/app
+      # Persist virtual environment across rebuilds
+      - atlas-venv:/app/.venv
+      # Cache uv downloads
+      - atlas-uv-cache:/root/.cache/uv
+    
+    # Environment variables
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+      - VIRTUAL_ENV=/app/.venv
+      - PATH=/app/.venv/bin:/usr/local/bin:/usr/bin:/bin
+    
+    # Working directory
+    working_dir: /app
+    
+    # Resource limits (adjust as needed)
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "python", "--version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+# Named volumes for persistence
+volumes:
+  atlas-venv:
+    name: atlas-venv
+  atlas-uv-cache:
+    name: atlas-uv-cache
+

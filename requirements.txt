@@ -1,0 +1,45 @@
+# Project Atlas - Core Dependencies
+# Managed with uv: uv pip install -r requirements.txt
+# Last updated: 2025-12-14
+
+# =============================================================================
+# Development Tools
+# =============================================================================
+ruff>=0.8.0                    # Fast Python linter and formatter
+mypy>=1.13.0                   # Static type checking
+pytest>=8.3.0                  # Testing framework
+pytest-cov>=6.0.0              # Coverage reporting
+pytest-asyncio>=0.24.0         # Async test support
+
+# =============================================================================
+# Core Libraries
+# =============================================================================
+pydantic>=2.10.0               # Data validation and settings
+python-dotenv>=1.0.0           # Environment variable management
+structlog>=24.4.0              # Structured logging
+rich>=13.9.0                   # Rich terminal output
+
+# =============================================================================
+# Async / Concurrency
+# =============================================================================
+anyio>=4.7.0                   # Async compatibility layer
+httpx>=0.28.0                  # Async HTTP client
+
+# =============================================================================
+# Data / Schema (Phase 03 preparation)
+# =============================================================================
+jsonschema>=4.23.0             # JSON Schema validation
+
+# =============================================================================
+# Build Tools (for C extensions, Phase 01)
+# =============================================================================
+setuptools>=75.6.0             # Build system
+wheel>=0.45.0                  # Wheel building
+cffi>=1.17.0                   # C Foreign Function Interface
+
+# =============================================================================
+# Documentation
+# =============================================================================
+mkdocs>=1.6.0                  # Documentation generator
+mkdocs-material>=9.5.0         # Material theme for mkdocs
+

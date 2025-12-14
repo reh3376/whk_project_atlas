@@ -1,0 +1,33 @@
+dist/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Python
+.venv/
+*.egg-info/
+.eggs/
+*.egg
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+htmlcov/
+.coverage
+*.pyo
+
+# Environment
+.env
+.env.local
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# Build artifacts
+build/
+*.so
+*.o
+
+# OS
+Thumbs.db
