@@ -70,13 +70,13 @@ _Last updated: 2025-12-14_
 
 > Rule: `PROJECT_STATE.md` is canonical status; Linear is canonical execution. Keep these links current.
 
-- Initiative (Project Atlas): (pending setup)
-- Project (P00 — Foundation Setup): (pending setup)
-- Project (P01 — Modular Platform Architecture): (pending setup)
-- Project (P02 — SDLC & DevEx Standardization): (pending setup)
-- Project (P03 — Data Pipeline & Curated Datasets): (pending setup)
-- Project (P04 — MLOps + SME Supervision): (pending setup)
-- Project (P05 — Reliability / Observability / Security): (pending setup)
+- Initiative (Project Atlas): https://linear.app/whiskey-house-eandt/initiative/project-altas-advanced-software-and-sdlc-mastery-8a90f584ec2b/overview
+- Project (P00 — Foundation Setup): https://linear.app/whiskey-house-eandt/project/p00-foundation-setup-906714c1a5d9/overview
+- Project (P01 — Modular Platform Architecture): https://linear.app/whiskey-house-eandt/project/p01-modular-platform-architecture-37f090463226/overview
+- Project (P02 — SDLC & DevEx Standardization): https://linear.app/whiskey-house-eandt/project/p02-sdlc-and-devex-standardization-b865d991dffd/overview
+- Project (P03 — Data Pipeline & Curated Datasets): https://linear.app/whiskey-house-eandt/project/p03-data-pipeline-and-curated-datasets-fc2f1f9fd276/overview
+- Project (P04 — MLOps + SME Supervision): https://linear.app/whiskey-house-eandt/project/p04-mlops-sme-supervision-40abc438068d/overview
+- Project (P05 — Reliability / Observability / Security): https://linear.app/whiskey-house-eandt/project/p05-reliability-observability-security-1c7b0b636668/overview
 
 ## GitHub Links
 - Repo root: https://github.com/reh3376/whk_project_atlas

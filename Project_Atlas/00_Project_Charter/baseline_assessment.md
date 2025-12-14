@@ -19,15 +19,15 @@ Purpose: capture your starting point so improvements are measurable.
 
 | Skill Area | Rating | Notes / Evidence |
 |------------|--------|------------------|
-| Architecture tradeoffs (boundaries, coupling, change tolerance) | [?] | _e.g., "Led redesign of X service"_ |
-| SDLC design (CI/CD, testing strategy, release patterns) | [?] | _e.g., "Set up GitHub Actions for Y"_ |
-| Distributed systems fundamentals | [?] | _e.g., "Built message queue consumers"_ |
-| Observability (logs/metrics/traces) | [?] | _e.g., "Implemented Prometheus metrics"_ |
-| Reliability/SRE (SLOs, incident response) | [?] | _e.g., "On-call rotation experience"_ |
-| Security fundamentals (threat modeling, authn/authz) | [?] | _e.g., "Implemented OAuth2 flow"_ |
-| Data engineering (schemas, lineage, idempotency) | [?] | _e.g., "Built ETL pipelines"_ |
-| MLOps (evaluation, drift, monitoring) | [?] | _e.g., "Deployed model to production"_ |
-| Team process leadership (cadence, alignment, adoption) | [?] | _e.g., "Led sprint ceremonies"_ |
+| Architecture tradeoffs (boundaries, coupling, change tolerance) | [1] | _e.g., "Led redesign of X service"_ |
+| SDLC design (CI/CD, testing strategy, release patterns) | [2] | _e.g., "Set up GitHub Actions for Y"_ |
+| Distributed systems fundamentals | [1] | _e.g., "Built message queue consumers"_ |
+| Observability (logs/metrics/traces) | [1] | _e.g., "Implemented Prometheus metrics"_ |
+| Reliability/SRE (SLOs, incident response) | [1] | _e.g., "On-call rotation experience"_ |
+| Security fundamentals (threat modeling, authn/authz) | [1] | _e.g., "Implemented OAuth2 flow"_ |
+| Data engineering (schemas, lineage, idempotency) | [2] | _e.g., "Built ETL pipelines"_ |
+| MLOps (evaluation, drift, monitoring) | [1] | _e.g., "Deployed model to production"_ |
+| Team process leadership (cadence, alignment, adoption) | [2] | _e.g., "Led sprint ceremonies"_ |
 
 ### Summary Statistics
 
