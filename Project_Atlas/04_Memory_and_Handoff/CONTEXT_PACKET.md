@@ -16,6 +16,8 @@ Primary output mode: architectural leadership, supported by implementation and S
 
 Execution tracking: Linear (projects per phase). Canonical status: `PROJECT_STATE.md`.
 
+GitHub repository: https://github.com/reh3376/whk_project_atlas
+
 Tech stack:
 - Backend: Python (Cython optional) + C libraries for compute-heavy code
 - Frontend: Next.js / JS/TS

@@ -78,7 +78,7 @@ _Last updated: 2025-12-14_
 - Project (P04 — MLOps + SME Supervision): (pending setup)
 - Project (P05 — Reliability / Observability / Security): (pending setup)
 
-## GitHub Links (optional)
-- Repo root: (pending setup)
-- Default branch: (pending setup)
-- PRs (filtered): (pending setup)
+## GitHub Links
+- Repo root: https://github.com/reh3376/whk_project_atlas
+- Default branch: https://github.com/reh3376/whk_project_atlas/tree/main
+- PRs: https://github.com/reh3376/whk_project_atlas/pulls
