@@ -39,19 +39,21 @@ _Last updated: 2025-12-14_
 - DORA metrics as primary delivery health indicators
 
 ## Baseline Snapshot (captured 2025-12-14)
-> Skill ratings pending user input. See `00_Project_Charter/baseline_assessment.md`
 
 | Area | Rating |
 |------|--------|
-| Architecture tradeoffs | TBD |
-| SDLC design | TBD |
-| Distributed systems | TBD |
-| Observability | TBD |
-| Reliability/SRE | TBD |
-| Security fundamentals | TBD |
-| Data engineering | TBD |
-| MLOps | TBD |
-| Team process leadership | TBD |
+| Architecture tradeoffs | 1.0 |
+| SDLC design | 2.0 |
+| Distributed systems | 1.5 |
+| Observability | 1.0 |
+| Reliability/SRE | 1.5 |
+| Security fundamentals | 2.0 |
+| Data engineering | 1.75 |
+| MLOps | 1.5 |
+| Team process leadership | 2.0 |
+| **TOTAL** | **14.25 / 27 (52.8%)** |
+
+**Key Insight**: Strong technical foundation with deep domain expertise (30 years data/engineering, Applied Math & EE background). Primary growth area: Adopting standard frameworks, terminology, and team-oriented software development practices.
 
 ## Metrics snapshot (optional but recommended)
 - Lead time: Not yet measured
